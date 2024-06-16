@@ -1,11 +1,12 @@
 {
   "name": "generate-cli-structure",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "1. Generate new module 2. Generate error swagger",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "npm publish --access public"
   },
   "keywords": [
     "generate-cli-structure",
