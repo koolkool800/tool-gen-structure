@@ -1,14 +1,11 @@
 import inquirer from 'inquirer';
-import { generateModule, generateSwaggerError } from './tools/index.js';
+import { generateModule } from './tools/index.js';
 
 const main = async () => {
   const choices = await getChoices();
   switch (choices.Choice) {
     case 'addModule':
       await generateModule();
-      break;
-    case 'addSwaggerError':
-      generateSwaggerError();
       break;
   }
 };
