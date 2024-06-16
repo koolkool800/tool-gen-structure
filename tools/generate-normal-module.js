@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 import * as fs from "fs";
 import { createDirectories, createFiles, getFolderStructure } from "../utils/index.js";
 
-export async function generateModule() {
+export async function generateNormalStructure() {
   const { moduleName } = await inquirer.prompt({
     type: "input",
     name: "moduleName",

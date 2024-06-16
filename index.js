@@ -1,11 +1,14 @@
 import inquirer from 'inquirer';
-import { generateModule } from './tools/index.js';
+import { generateMonoModule, generateNormalStructure } from './tools/index.js';
 
 const main = async () => {
   const choices = await getChoices();
   switch (choices.Choice) {
-    case 'addModule':
-      await generateModule();
+    case 'add-module-artnprice':
+      await generateNormalStructure();
+      break;
+    case 'add-module-monorepo':
+      await generateMonoModule();
       break;
   }
 };
@@ -18,12 +21,12 @@ const getChoices = async () => {
       message: 'What do you want to do?',
       choices: [
         {
-          name: 'Generate Module',
-          value: 'addModule'
+          name: 'Generate Module for Artnprice',
+          value: 'add-module-artnprice'
         },
         {
-          name: 'Generate Swagger Error',
-          value: 'addSwaggerError'
+          name: 'Generate Module for monorepo',
+          value: 'add-module-monorepo'
         }
       ]
     }
