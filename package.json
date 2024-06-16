@@ -1,16 +1,25 @@
 {
   "name": "generate-cli-structure",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. Generate new module 2. Generate error swagger",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "barokool knabao7a7@gmail.com",
   "license": "ISC",
   "dependencies": {
     "inquirer": "^9.2.23"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koolkool800/tool-gen-structure.git"
+  },
+  "bugs": {
+    "url": "https://github.com/koolkool800/tool-gen-structure/issues"
+  },
+  "homepage": "https://github.com/koolkool800/tool-gen-structure#readme"
 }

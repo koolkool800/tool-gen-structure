@@ -92,9 +92,9 @@ export function getFolderStructure(moduleName) {
       },
     },
     files: {
-      "user-module": {
-        name: "user-module",
-        path: `src/modules/${moduleName}/user-module.ts`,
+      index: {
+        name: moduleName,
+        path: `src/modules/${moduleName}/${moduleName}-module.ts`,
       },
     },
   };
