@@ -4,10 +4,6 @@
 Pick 1
 -> Input module name
 
-Logic
-
-->
-
 Example :
 
 1. Generate new module

@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 import * as fs from "fs";
 import { getFolderStructure } from "../utils/folder-structure.js";
+
 export async function generateModule() {
   const { moduleName } = await inquirer.prompt({
     type: "input",
@@ -25,7 +26,6 @@ export async function generateModule() {
 }
 
 function createDirectories(directoriesPassed) {
-
   for (const directory in directoriesPassed) {
     const { path } = directoriesPassed[directory];
     if (!fs.existsSync(path)) {
@@ -41,10 +41,10 @@ function createDirectories(directoriesPassed) {
 }
 
 function createFiles(filesPassed) {
-  for  (const file in filesPassed) {
-    const {path} = filesPassed[file];
+  for (const file in filesPassed) {
+    const { path } = filesPassed[file];
     if (!fs.existsSync(path)) {
-      fs.writeFileSync(path,"")
+      fs.writeFileSync(path, "");
     }
   }
 }
