@@ -1,6 +1,6 @@
 {
   "name": "generate-cli-structure",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "1. Generate new module 2. Generate error swagger",
   "main": "index.js",
   "type": "module",
