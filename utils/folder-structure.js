@@ -65,22 +65,22 @@ export function getFolderStructure(moduleName) {
               abstracts: {
                 name: "abstracts",
                 path: `src/modules/${moduleName}/database/repositories/abstracts`,
-                // files: {
-                //   index: {
-                //     name: "index",
-                //     path: `src/modules/${moduleName}/database/repositories/abstracts/index.ts`,
-                //   },
-                // },
+                files: {
+                  index: {
+                    name: "index",
+                    path: `src/modules/${moduleName}/database/repositories/abstracts/index.ts`,
+                  },
+                },
               },
               implements: {
                 name: "implements",
                 path: `src/modules/${moduleName}/database/repositories/implements`,
-                // files: {
-                //   index: {
-                //     name: "index",
-                //     path: `src/modules/${moduleName}/database/repositories/implements/index.ts`,
-                //   },
-                // },
+                files: {
+                  index: {
+                    name: "index",
+                    path: `src/modules/${moduleName}/database/repositories/implements/index.ts`,
+                  },
+                },
               },
             },
           },
