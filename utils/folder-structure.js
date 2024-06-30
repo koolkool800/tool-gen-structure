@@ -89,6 +89,38 @@ export function getFolderStructure(moduleName) {
       domain: {
         name: "domain",
         path: `src/modules/${moduleName}/domain`,
+        directories: {
+          models: {
+            name: "models",
+            path: `src/modules/${moduleName}/domain/models`,
+            files: {
+              index: {
+                name: "index",
+                path: `src/modules/${moduleName}/domain/models/index.ts`,
+              },
+            },
+          },
+          enum : {
+            name: "enum",
+            path : `src/modules/${moduleName}/domain/enum`,
+            files: {
+              index: {
+                name: "index",
+                path : `src/modules/${moduleName}/domain/enum/index.ts`,
+              }
+            }
+          },
+          "use-case" : {
+            name : "use-case",
+            path : `src/modules/${moduleName}/domain/use-case`,
+            files: {
+              index: {
+                name: "index",
+                path : `src/modules/${moduleName}/domain/use-case/index.ts`,
+              }
+            }
+          }
+        },
       },
     },
     files: {
