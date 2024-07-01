@@ -10,8 +10,45 @@ export function generateErrorCode() {
   );
   const modulesDir = path.join(__dirname, "src/modules");
 
-  // Get all the error code file in src/modules
-  // getEnumValuesFromFile(errorCodeFile);
+  const htmlModulesTable = generateModuleErrorCode(modulesDir);
+  const htmlCommonErrCode = generateCommonErrorCode(commonErrorCodeFile);
+  const moduleName = "CommonErrorCode";
+
+  const htmlCommonTable = generateErrorTable(htmlCommonErrCode, moduleName);
+
+  const htmlTable = `
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="1">
+        <tr>
+            <th>Error Code</th>
+            <th>HTTP Code</th>
+            <th>Module Name</th>
+        </tr>
+        ${htmlCommonTable}
+        ${htmlModulesTable}
+    </table>
+  </body>
+</html>
+
+   
+    `;
+
+  return htmlTable;
+}
+
+/**
+ *
+ * @param {*} modulesDir
+ * @returns a html table of error code in src/modules
+ */
+function generateModuleErrorCode(modulesDir) {
   const moduleFolders = getAllFoldersName(modulesDir);
   let errorHtml = ``;
 
@@ -22,66 +59,13 @@ export function generateErrorCode() {
       "domain/enum/error-code.ts"
     );
     if (fs.existsSync(errorCodeFile)) {
-      const { enumFileName, enumFileValues } =
-        getEnumValuesFromFile(errorCodeFile);
-      const tableHtml = generateErrorTable(enumFileValues, enumFileName);
+      const { enumName, enumValues } = getEnumValuesFromFile(errorCodeFile);
+      const tableHtml = generateErrorTable(enumValues, enumName);
       errorHtml += tableHtml;
     }
   });
 
-  const htmlTable = `
-    <table border="1">
-        <tr>
-            <th>Error Code</th>
-            <th>HTTP Code</th>
-            <th>Module Name</th>
-        </tr>
-        ${errorHtml}
-    </table>
-    `;
-
-    return htmlTable
-
-
-  // const errorCode = generateCommonErrorCode(errorCodeFile);
-  // const moduleName = "Common Error Code"
-
-  // const htmlTable = `
-  //   <table border="1">
-  //       <tr>
-  //           <th>Error Code</th>
-  //           <th>HTTP Code</th>
-  //           <th>Module Name</th>
-  //       </tr>
-  //       ${generateErrorTable(errorCode, moduleName)}
-  //   </table>
-  //   `;
-
-  //   const modulesPath = path.join(__dirname, "/src/modules");
-  //  const  folders = getAllFoldersName(modulesPath)
-
-  //  folders.forEach(folder => {
-  //   const errorCodeFile = path.join(__dirname, `/src/modules/${folder}/domain/enum/error-code.ts`)
-
-  // check if has error-code.ts file exist
-  //   if(fs.existsSync(errorCodeFile)) {
-  //     const errorCode = generateCommonErrorCode(errorCodeFile);
-  //     const moduleName = folder
-  //     const htmlTable = `
-  //     <table border="1">
-  //         <tr>
-  //             <th>Error Code</th>
-  //             <th>HTTP Code</th>
-  //             <th>Module Name</th>
-  //         </tr>
-  //         ${generateErrorTable(errorCode, moduleName)}
-  //     </table>
-  //     `;
-  //     console.log(htmlTable)
-  //   }
-  //  })
-
-  // return htmlTable;
+  return errorHtml;
 }
 
 /**
@@ -100,9 +84,9 @@ function generateErrorTable(enumValues, moduleName) {
       const statusCode = value.split("|")[1];
       tableRows += `
             <tr>
+            <td>${moduleName}</td>
                 <td>${status}</td>
                 <td>${statusCode}</td>
-                <td>${moduleName}</td>
             </tr>`;
     }
   }
@@ -163,8 +147,6 @@ function getEnumValuesFromFile(filePath) {
       const value = memberMatch[2];
       enumValues[key] = value;
     }
-
-    console.log(enumValues)
 
     return { enumName, enumValues };
   }
